@@ -5,11 +5,27 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("index", {
-        msg: "Welcome!",
         examples: dbExamples
       });
     });
   });
+
+  app.get("/signup.html", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("signup", {
+        examples: dbExamples
+      });
+    });
+  });
+
+  app.get("/friends.html", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("friends", {
+        examples: dbExamples
+      });
+    });
+  });
+
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
