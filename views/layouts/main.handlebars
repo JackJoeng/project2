@@ -15,8 +15,24 @@
 	</nav>
 	<a href="index.html" class="logo">App name/LOGO</a>
 	<nav class="right">
-		<a href="#" class="button alt">Log in</a>
+		<!--<a href="#" class="button alt">Log in</a>-->
+			
+				<div id="status"></div>
+				<img id="myImage" src="" style="float:left"/>
+			
+			
+			<div id="fbLogin">
+				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+				</fb:login-button>
+			</div>
+
 	</nav>
+		
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+	<!--<button type="button" onclick="javascript:FB.logout(function() { window.location.reload() }); return false;">LOGOUT</button>-->
 </header>
 
 <!-- Menu -->
@@ -29,6 +45,8 @@
 	<ul class="actions vertical">
 		<li><a href="#" class="button fit">Login</a></li>
 	</ul>
+
+
 </nav>
 
  {{{body}}}
@@ -37,7 +55,7 @@
 <!-- Footer -->
 <footer id="footer">
 	<div class="inner">
-		<h2>Coming Soon</h2>
+		<h2>TEST</h2>
 		<ul class="actions">
 			<li><span class="icon fa-phone"></span> <a href="#">(917) 628-3996</a></li>
 			<li><span class="icon fa-envelope"></span> <a href="#">JackJoeng@gmail.com</a></li>
