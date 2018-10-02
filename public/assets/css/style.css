@@ -1,0 +1,125 @@
+h3 {
+    text-align: center;
+}
+
+body{
+    height: 1000px;;
+}
+
+/* THIS STYLESHEET TARGETS THE BOOTSTRAP ELEMENTS
+ AND CHANGE THEM TO THE FINAL VISUAL OUTPUT*/   
+ 
+ body{
+    font-family: 'Lato', sans-serif;
+ }
+
+
+
+ /*NAV BAR STARTS HERE*/
+
+.lead{
+    color:white;
+    text-align:center;
+    margin-top: 300px;
+    font-weight: bold;
+    font-size: 35px;
+}
+ .navbar-brand{
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    padding: 20px;
+    font-weight: bold;
+    color: darkslategrey;
+}
+
+
+.nav-item{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+    font-weight: 20px;
+    
+}
+
+#nav-logo{
+color:#202020;
+font-family: 'Pacifico', cursive;
+font-size: 40px;
+}
+
+ /*HERO IMAGE STARTS HERE*/
+.hero-section{
+    background-image: url("/assets/images/banner.jpg") ;
+
+}
+
+ 
+ .hero-image{
+    background-image:url("/assets/images/banner.jpg");
+	
+    background-size: cover;
+
+	background-blend-mode: multiply;
+	
+	background-repeat: no-repeat;
+	display: block;
+ }
+
+.lead-footer{
+    margin-top: 20px;
+    color: #D3D3D3;
+    text-align: center;
+    font-size: 20px;
+
+
+}
+
+
+ .hero-image p{
+     font-family: Lato;
+     color: white;
+     font-weight: bold;
+     text-align: center;
+     margin-top: 20px;
+ }
+ /*HERO IMAGE ENDS HERE*/
+
+.hero-image-footer{
+    background-color: #202020;
+}
+
+
+ /*THREE COLUMNS STARTS HERE*/
+
+
+ /*THREE COLUMNS ENDS HERE*/
+
+  /*TEN COLUMNS STARTS HERE*/
+
+
+/* NEWSLETTER ENDS HERE */
+
+
+
+
+
+
+
+
+
+/*media query 767*/
+
+@media only screen and (max-width: 767px) {
+    .about-port{
+    height:1100px; 
+    background-color: #D3D3D3;
+    }
+    .column1{
+    padding-left: 20px;
+    margin-left: 140px;
+    }
+    .about{
+        height: 725px;
+    }
+}
