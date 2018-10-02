@@ -8,9 +8,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Example.sync();
 
-  return Example;
-
-//hi
+  return Example; //comment
 
 };
 
