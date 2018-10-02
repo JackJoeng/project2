@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var Example = sequelize.define("Example", {
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT,
+    picture: DataTypes.STRING,
+    email: DataTypes.TEXT,
     name: DataTypes.STRING,
-    facebookID: DataTypes.INTEGER,
+    facebookID: DataTypes.BIGINT(11),
   });
 
   Example.sync();

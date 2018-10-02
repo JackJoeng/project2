@@ -104,7 +104,7 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 window.fbAsyncInit = function () {
 	FB.init({
-	  appId: '478628865990467',
+	  appId: '148232399464296',
 	  cookie: true,
 	  xfbml: true,
 	  version: 'v3.1'
@@ -120,7 +120,7 @@ window.fbAsyncInit = function () {
   
   };
   
-  
+  console.log("YEEET")
   
   
   (function (d, s, id) {
@@ -157,6 +157,7 @@ window.fbAsyncInit = function () {
     
       })};
 
+      console.log("YEEETSTERRR")
       refreshExamples();
 
 	  });
