@@ -150,11 +150,14 @@ window.fbAsyncInit = function () {
 		document.getElementById('nameGrab').innerHTML =
       'Welcome, ' + response.name + '!' + response.id;
       
+      var refreshExamples = function() {
       API.getExamples().then(function(data) {
         console.log("YEEET")
         console.log(example)
     
-      });
+      })};
+
+      refreshExamples();
 
 	  });
   
