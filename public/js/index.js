@@ -148,7 +148,13 @@ window.fbAsyncInit = function () {
 		console.log(response.picture);
 		console.log('Successful login for: ' + response.name+response.id);
 		document.getElementById('nameGrab').innerHTML =
-		  'Welcome, ' + response.name + '!' + response.id;
+      'Welcome, ' + response.name + '!' + response.id;
+      
+      API.getExamples().then(function(data) {
+        console.log("YEEET")
+        console.log(example)
+    
+      });
 
 	  });
   
@@ -162,3 +168,4 @@ window.fbAsyncInit = function () {
 		'into this app.';
 	}
   }
+
