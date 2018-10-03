@@ -118,6 +118,9 @@ function statusChangeCallback(response) {
 							email: response.email,
 							name: response.name,
 							facebookID: response.id,
+							friendsList: "",
+							matchList: "",
+
 						};
 						
 						return API.saveExample(example).then(function () {
