@@ -2,9 +2,12 @@
 <section id="banner">
 	<div class="content">
 		<h1>Dating App</h1>
-		<p>Save your date <br />by inviting your friends to join the conversation.</p>
+		<p>Save your date
+			<br />by inviting your friends to join the conversation.</p>
 		<ul class="actions">
-			<li><a href="#one" class="button scrolly">Get Started</a></li>
+			<li>
+				<a href="#one" class="button scrolly">Get Started</a>
+			</li>
 		</ul>
 	</div>
 </section>
@@ -13,31 +16,57 @@
 <section id="one" class="wrapper">
 	<div class="inner flex flex-3">
 		<div class="flex-item left">
-			<div>
-				<h3>Feature 1</h3>
-				<p>Coming Soon<br /> Coming Soon</p>
-			</div>
-			<div>
-				<h3>Feature 2</h3>
-				<p>Coming Soon<br /> Coming Soon</p>
-			</div>
+			<div id="test"></div>
+			<img id="testimage" src="" style="float:left" />
+
+
 		</div>
 		<div class="flex-item right">
 			<div>
 				<h3>Feature 3</h3>
-				<p>Coming Soon<br /> Coming Soon</p>
+
+				<button type="button" id="friendbtn">Go to Friend Finder</button>
+
+
+				<button type="button" id="testbtn">Add to DB Test</button>
+				<input type="text" id="searchInput">
+				<button type="button" id="searchBtn">Add to FriendsList</button>
+
 			</div>
 			<div>
-				<h3>Feature 4</h3>
-				<p>Coming Soon<br /> Coming Soon</p>
+				<div id="friendsList"></div>
+				<h3>Friend List:</h3>
+				<ul id="example-list" class="list-group">
+					{{#each examples}}
+					<li data-id="{{this.id}}" class="list-group-item">
+						<a href="example/{{this.id}}">{{this.facebookID}}</a>
+						<button class="btn btn-danger float-right delete">ｘ</button>
+					</li>
+					{{/each}}
+				</ul>
+
+
+
+				<h3>Match List</h3>
+				<div id="matchList"></div>
+
+
+				
+
+
 			</div>
 		</div>
 	</div>
 </section>
+				<h3>Match Finder</h3>
+				
+				<ul id="match-list" class="list-group">
+					{{#each match}}
+					<li match-id="{{this.id}}" class="list-group-item">
+						<a href="example/{{this.id}}">{{this.facebookID}}</a>
+						<button class="btn btn-danger float-right delete">ｘ</button>
+					</li>
+					{{/each}}
+				</ul>
 
-
-
- 
-
-
-
+<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>

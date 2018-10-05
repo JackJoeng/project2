@@ -1,9 +1,13 @@
 // Requiring our Todo model
 var db = require("../models");
 
-// Routes
-// =============================================================
-module.exports = function(app) {
+
+module.exports = function (app) {
+  // Get all examples
+  app.get("/api/examples", function (req, res) {
+    db.Example.findAll({}).then(function (dbExamples) {
+      res.json(dbExamples);
+    });
 
   // GET route for getting all of the posts
   app.get("/api/posts/", function(req, res) {
@@ -48,6 +52,7 @@ module.exports = function(app) {
       .then(function(dbPost) {
         res.json(dbPost);
       });
+
   });
 
   // DELETE route for deleting posts
@@ -62,6 +67,27 @@ module.exports = function(app) {
       });
   });
 
+
+
+
+  app.get("/api/examples/:id", function (req, res) {
+    db.Example.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbExamples) {
+      res.json(dbExamples);
+    });
+  });
+
+
+
+  // Delete an example by id
+  app.delete("/api/examples/:id", function (req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+      res.json(dbExample);
+    });
+
   // PUT route for updating posts
   app.put("/api/posts", function(req, res) {
     db.Post.update(req.body,
@@ -73,5 +99,25 @@ module.exports = function(app) {
       .then(function(dbPost) {
         res.json(dbPost);
       });
+
   });
+
+  app.put("/api/examples/:id", function (req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    const reqBody = req.body;
+    console.log('reqbody ', reqBody);
+    db.Example.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbExample) {
+      res.json(dbExample);
+    });
+  });
+
 };
+
+
+
+
