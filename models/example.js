@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     facebookID: DataTypes.BIGINT(11),
     friendsList: DataTypes.STRING(1234),
-    matchList: DataTypes.STRING(1234)
+    matchList: DataTypes.STRING(1234),
+    matchQueue: DataTypes.STRING(1234)
   });
 
   Example.sync();

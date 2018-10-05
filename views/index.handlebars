@@ -24,9 +24,13 @@
 		<div class="flex-item right">
 			<div>
 				<h3>Feature 3</h3>
+
+				<button type="button" id="friendbtn">Go to Friend Finder</button>
+
+
 				<button type="button" id="testbtn">Add to DB Test</button>
 				<input type="text" id="searchInput">
-				<button type="button" id="searchBtn" method="PUT" action="/api/examples/:id">Add to FriendsList</button>
+				<button type="button" id="searchBtn">Add to FriendsList</button>
 
 			</div>
 			<div>
@@ -46,6 +50,7 @@
 				<h3>Match List</h3>
 				<div id="matchList"></div>
 
+
 				
 
 
@@ -53,5 +58,15 @@
 		</div>
 	</div>
 </section>
+				<h3>Match Finder</h3>
+				
+				<ul id="match-list" class="list-group">
+					{{#each match}}
+					<li match-id="{{this.id}}" class="list-group-item">
+						<a href="example/{{this.id}}">{{this.facebookID}}</a>
+						<button class="btn btn-danger float-right delete">ｘ</button>
+					</li>
+					{{/each}}
+				</ul>
 
 <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
