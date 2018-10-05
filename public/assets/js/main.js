@@ -1,9 +1,3 @@
-$("#menu-toggle").click(function(e) {
-  e.preventDefault();
-  $("#wrapper").toggleClass("toggled");
-});
-
-
 window.fbAsyncInit = function () {
 	FB.init({
 	  appId: '478628865990467',
@@ -53,9 +47,6 @@ window.fbAsyncInit = function () {
 		  'Welcome, ' + response.name + '!';
 	  $('#myImage').attr('src', response.picture.data.url);
 		$('#fbLogin').hide();
-
-
-	
 
 	  });
   
