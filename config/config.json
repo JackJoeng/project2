@@ -1,19 +1,18 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "blogger",
-    "host": "127.0.0.1",
-    "port": 3306,
+    "password": "root",
+    "database": "exampledb",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "port": 3306,
-    "dialect": "mysql"
+    "password": "root",
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging": false
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
