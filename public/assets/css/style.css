@@ -2,9 +2,61 @@ h3 {
     text-align: center;
 }
 
+.my-image{
+    border-radius: 50%;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+.column1{
+    padding: 5px;
+}
+
+.column2{
+    padding: 5px;
+}
+
+.column3{
+    padding: 5px;
+}
+
 body{
     height: 1000px;;
 }
+
+#header nav a[href="#menu"] {
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 2em;
+    color: #dee1e3;
+    z-index: 9999;
+}
+
+    #header nav a[href="#menu"]:before {
+        content: "";
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-transform: none !important;
+    }
+
+    #header nav a[href="#menu"] span {
+        display: none;
+    }
+
+    #header nav a[href="#menu"]:before {
+        margin: 0 0.5em 0 0;
+    }
 
 /* THIS STYLESHEET TARGETS THE BOOTSTRAP ELEMENTS
  AND CHANGE THEM TO THE FINAL VISUAL OUTPUT*/   
@@ -30,6 +82,7 @@ body{
     padding: 20px;
     font-weight: bold;
     color: darkslategrey;
+    z-index: -1;
 }
 
 
@@ -46,6 +99,8 @@ body{
 color:#202020;
 font-family: 'Pacifico', cursive;
 font-size: 40px;
+align-content: center;
+
 }
 
  /*HERO IMAGE STARTS HERE*/
@@ -63,7 +118,7 @@ font-size: 40px;
 	background-blend-mode: multiply;
 	
 	background-repeat: no-repeat;
-	display: block;
+	display: block;5
  }
 
 .lead-footer{
@@ -89,6 +144,27 @@ font-size: 40px;
     background-color: #202020;
 }
 
+.hero-image-pre-footer{
+    background-image: url("/assets/images/-5.jpg");
+    background-position-y: -120px;
+    background-size: 100%;
+    margin-top: 30px;
+}
+
+.lead-pre-footer{
+    color: orangered;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    padding-top: 35px;
+
+}
+
+.subtitle{
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
 
  /*THREE COLUMNS STARTS HERE*/
 
@@ -105,8 +181,133 @@ font-size: 40px;
 
 
 
+/* side basra stuff!!!!!!!*/
 
+body {
+    overflow-x: hidden;
+ }
 
+/* Toggle Styles */
+
+#wrapper {
+     padding-left: 250px;
+}
+
+#wrapper.toggled {
+   
+
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
 
 /*media query 767*/
 
