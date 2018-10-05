@@ -1,10 +1,13 @@
 
 
+<<<<<<< HEAD
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
 });
 
+=======
+>>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
 
 window.fbAsyncInit = function () {
 	FB.init({
