@@ -27,7 +27,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/blog", function(req, res) {
+  /* app.get("/blog", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/blog.html"));
   });
 
@@ -38,7 +38,7 @@ module.exports = function(app) {
   // blog route loads blog.html
   app.get("/blog", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
+  }); */
 
 
   // Load example page and pass in an example by id
