@@ -2,10 +2,6 @@ h3 {
     text-align: center;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 .my-image{
     border-radius: 50%;
 }
@@ -32,19 +28,10 @@ img {
     padding: 5px;
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 body{
     height: 1000px;;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 #header nav a[href="#menu"] {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
@@ -71,11 +58,6 @@ body{
         margin: 0 0.5em 0 0;
     }
 
-<<<<<<< HEAD
-=======
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 /* THIS STYLESHEET TARGETS THE BOOTSTRAP ELEMENTS
  AND CHANGE THEM TO THE FINAL VISUAL OUTPUT*/   
  
@@ -100,14 +82,7 @@ body{
     padding: 20px;
     font-weight: bold;
     color: darkslategrey;
-<<<<<<< HEAD
-<<<<<<< HEAD
     z-index: -1;
-=======
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
-    z-index: -1;
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 }
 
 
@@ -124,16 +99,7 @@ body{
 color:#202020;
 font-family: 'Pacifico', cursive;
 font-size: 40px;
-<<<<<<< HEAD
-<<<<<<< HEAD
 align-content: center;
-
-=======
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
-align-content: center;
-
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 }
 
  /*HERO IMAGE STARTS HERE*/
@@ -151,15 +117,9 @@ align-content: center;
 	background-blend-mode: multiply;
 	
 	background-repeat: no-repeat;
-<<<<<<< HEAD
-<<<<<<< HEAD
-	display: block;5
-=======
-	display: block;
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
-	display: block;5
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
+
+	display: block
+   
  }
 
 .lead-footer{
@@ -185,10 +145,7 @@ align-content: center;
     background-color: #202020;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
+
 .hero-image-pre-footer{
     background-image: url("/assets/images/-5.jpg");
     background-position-y: -120px;
@@ -210,11 +167,6 @@ align-content: center;
     margin-bottom: 25px;
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 
  /*THREE COLUMNS STARTS HERE*/
 
@@ -230,11 +182,6 @@ align-content: center;
 
 
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 /* side basra stuff!!!!!!!*/
 
 body {
@@ -334,7 +281,6 @@ body {
     color: #fff;
     background: none;
 }
-<<<<<<< HEAD
 
 @media(min-width:768px) {
     #wrapper {
@@ -363,18 +309,44 @@ body {
         margin-right: 0;
     }
 }
-=======
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 20px;
+    }
+
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
 
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;
     }
 
-<<<<<<< HEAD
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
     #wrapper.toggled {
         padding-left: 0;
     }
@@ -397,7 +369,6 @@ body {
         margin-right: 0;
     }
 }
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 
 /*media query 767*/
 

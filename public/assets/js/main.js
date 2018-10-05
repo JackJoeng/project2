@@ -1,19 +1,8 @@
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
 });
-<<<<<<< HEAD
 
-=======
->>>>>>> 7595e0de142cc0cb13c6636f4d7db3e0f78624e0
-=======
->>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
 
 window.fbAsyncInit = function () {
 	FB.init({
