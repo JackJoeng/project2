@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Home</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<!-- Header -->
+<header id="header">
+	<nav class="left">
+		<a href="#menu"><span>Menu</span></a>
+	</nav>
+	<a href="index.html" class="logo">App name/LOGO</a>
+	<nav class="right">
+		<!--<a href="#" class="button alt">Log in</a>-->
+			
+				<div id="status"></div>
+				<img id="myImage" src="" style="float:left"/>
+			
+			
+			<div id="fbLogin">
+				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+				</fb:login-button>
+			</div>
+</nav>
+  
+  <!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+		<li><a href="/">Home</a></li>
+		<li><a href="share.html">Blog</a></li>
+		<li><a href="friends.html">Chat</a></li>
+	</ul>
+	<ul class="actions vertical">
+		<li><a href="#" class="button fit">Login</a></li>
+	</ul>
+</nav>
+		
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+	<!--<button type="button" onclick="javascript:FB.logout(function() { window.location.reload() }); return false;">LOGOUT</button>-->
+</header>
+
+
+<body>
+  <div class="container"><br><br>
+        <form id="cms">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title">
+            <br />
+            <label for="body">Body:</label>
+            <textarea class="form-control" rows="10" id="body"></textarea>
+            <div class="form-group">
+            </div>
+            <br />
+            <button type="submit" class="btn btn-success submit btn-lg">Submit</button>
+          </div>
+        </form>
+  </div>
+  <!-- Custom Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+<script src="assets/js/cms.js" type="text/javascript"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
