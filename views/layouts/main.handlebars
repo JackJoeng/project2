@@ -4,17 +4,46 @@
 <title>Home</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/css/main.css" />
+
+    <!--CSS BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!---BOOTSTRAP JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="assets/css/style.css" />
+
+<!---Logo Fonts---->
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+
 </head>
 <body>
 
 <!-- Header -->
+
 <header id="header">
-	<nav class="left">
-		<a href="#menu"><span>Menu</span></a>
-	</nav>
-	<a href="index.html" class="logo">App name/LOGO</a>
-	<nav class="right">
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+
+
+
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto logo" id="nav-logo" href="/">Dating App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+               	<nav class="right">
 		<!--<a href="#" class="button alt">Log in</a>-->
 			
 				<div id="status"></div>
@@ -22,20 +51,42 @@
 			
 			
 			<div id="fbLogin">
+                <img id="myImage" src="" style="float:left"/>
 				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 				</fb:login-button>
 			</div>
 
-	</nav>
+			</nav>
 		
 	
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+            </li>
 
-	<!--<button type="button" onclick="javascript:FB.logout(function() { window.location.reload() }); return false;">LOGOUT</button>-->
+        </ul>
+    </div>
+</nav>
+
+	<div class="pos-f-t">
+	<div class="collapse" id="navbarToggleExternalContent">
+		<div class="bg-light p-4">
+			<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="">Chat</a></li>
+			</ul>
+		</div>
+	</div>
+	<nav class="navbar navbar-light bg-light">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+	</div>
 </header>
 
+
 <!-- Menu -->
+
 <nav id="menu">
 	<ul class="links">
 		<li><a href="/">Home</a></li>
@@ -47,23 +98,20 @@
 	</ul>
 
 
-</nav>
-
  {{{body}}}
 
 
 <!-- Footer -->
-<footer id="footer">
-	<div class="inner">
-		<h2>TEST</h2>
-		<ul class="actions">
-			<li><span class="icon fa-phone"></span> <a href="#">(917) 628-3996</a></li>
-			<li><span class="icon fa-envelope"></span> <a href="#">JackJoeng@gmail.com</a></li>
-			<li><span class="icon fa-map-marker"></span> New York, New York USA</li>
-		</ul>
-	</div>
-	<div class="copyright">Copyright &copy; 2018.Jack Yang 傑克-楊. All rights reserved.</div>
-</footer>
+    <div class="hero-section">
+        <!--HERO SECTION-->
+        <div class="jumbotron jumbotron-fluid hero-image-footer">
+            <div class="container" style="height:50px;">
+                <h1 class="display-4"></h1>
+                <h1 class="lead-footer"> Copyright &copy; Dating App 2018 </h1>
+           
+            </div>
+        </div>
+    </div>
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
