@@ -2,8 +2,14 @@
   "development": {
     "username": "root",
     "password": "root",
+<<<<<<< HEAD
     "database": "exampledb",
     "host": "localhost",
+=======
+    "database": "blogger",
+    "host": "127.0.0.1",
+    "port": 3306,
+>>>>>>> f4bd7c8450180cc0ac39f43e8bb3706f774b877a
     "dialect": "mysql"
   },
   "test": {
