@@ -1,4 +1,11 @@
 var $testbtn = $("#testbtn");
+var $searchbtn = $("#searchBtn");
+var $exampleList = $("#example-list");
+
+var currentUserID = ""
+var currentUserMySQLID = ""
+var currentName = ""
+var currentEmail = ""
 
 var API = {
 	saveExample: function (example) {
@@ -11,12 +18,36 @@ var API = {
 			data: JSON.stringify(example)
 		});
 	},
+	
+	updateExample: function (id, example) {
+		return $.ajax({
+			headers: {
+				"Content-Type": "application/json"
+			},
+			type: "PUT",
+			url: "/api/examples/"+id,	
+			data: JSON.stringify(example)
+		})
+	},
+
 	getExamples: function () {
 		return $.ajax({
 			url: "api/examples",
 			type: "GET"
 		});
 	},
+
+	getExamplesByID: function (id) {
+		return $.ajax({
+			url: "api/examples"+id,
+			type: "GET"
+		});
+	},
+
+
+
+
+
 	deleteExample: function (id) {
 		return $.ajax({
 			url: "api/examples/" + id,
@@ -24,6 +55,7 @@ var API = {
 		});
 	}
 };
+
 
 
 window.fbAsyncInit = function () {
@@ -51,7 +83,9 @@ var handleFormSubmit = function (event) {
 		picture: "yeeet",
 		email: "yeeert",
 		name: "E A",
-		facebookID: "10002034",
+		facebookID: "123",
+		matchList: "",
+		friendsList: "",
 	};
 
 
@@ -75,6 +109,8 @@ $testbtn.on("click", handleFormSubmit);
 console.log("success")
 var ifExists = false;
 
+
+
 function statusChangeCallback(response) {
 	console.log('statusChangeCallback');
 
@@ -85,62 +121,63 @@ function statusChangeCallback(response) {
 	if (response.status === 'connected') {
 		// Logged into your app and Facebook.
 		console.log('Welcome!  Fetching your information.... ');
-		FB.api('/me', { fields: 'name, email, picture.width(50).height(50), id' }, function (response) {
+		FB.api('/me', { fields: 'name, email, picture.height(300).width(300), id' }, function (response) {
 			console.log(response.picture);
 			console.log('Successful login for: ' + response.name);
+			
+			currentUserID = response.id 
+
 			document.getElementById('test').innerHTML =
-				'Welcome, ' + response.name + '!' + response.id;
+				'Welcome, ' + response.name + '!\n'+response.id+"\n"+response.email;
 			$('#myImage').attr('src', response.picture.data.url);
 			$('#fbLogin').hide();
+			$('#testimage').attr('src', response.picture.data.url);
 
 
 			//If facebook id does exist - create new entry to db
 			//If it does - do nothing
 			API.getExamples().then(function (data) {
-				console.log(data.length);
+				
+
 				for (i = 0; i < data.length; i++) {
-					console.log(i)
-					console.log(response.id +" yee "+data[i].facebookID)
+	
 					if (response.id == data[i].facebookID)
 					{
 						ifExists = true;
 					}
 				}
 
-				console.log("weeee "+ifExists)
+				console.log("User Exists: "+ifExists)
+
 				
 				if(!ifExists)
 					{
-						console.log("lol")
-
 						var example = {
 							picture: response.picture.data.url,
 							email: response.email,
 							name: response.name,
 							facebookID: response.id,
-							friendsList: "",
-							matchList: "",
-
+							friendsList: JSON.stringify(['test']),
+							matchList: JSON.stringify(['test']),
 						};
+
+						API.saveExample(example).then(function(data) {
+							refreshProfile(data.id);
+						  });
 						
-						return API.saveExample(example).then(function () {
-						console.log("success")
+						return API.updateExample(example).then(function () {
+						console.log("added user")
+
 					});
+
 				}
 				else
 				{
-					return console.log("lololol")
+					console.log(response.id + " already logged in!")
+					return refreshProfile(response.id);
 				}
 			})
-
-
-
-
-
-
-
 		})
-
 	} else {
 		// The person is not logged into your app or we are unable to tell.
 		$('#status').hide();
@@ -152,6 +189,159 @@ function statusChangeCallback(response) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+function friendSearch()
+{		
+	var ifExists = false;
+	var friend = document.getElementById('searchInput').value
+	var IDtoAdd = "";
+	var currentUser = {}
+
+	API.getExamples().then(function (data) {
+	
+		for (i = 0; i < data.length; i++) {
+
+			if(currentUserID == data[i].facebookID)
+			{
+				currentUser.id = data[i].id
+				currentUser.picture = data[i].picture
+				currentUser.email = data[i].email
+				currentUser.name = data[i].name
+				currentUser.facebookID = data[i].facebookID
+				currentUser.friendsList = data[i].friendsList
+				currentUser.matchList = data[i].matchList
+			}
+
+			if (friend == data[i].facebookID)
+				ifExists = true;
+				IDtoAdd = data[i].id
+		}
+		
+		console.log(friend+" Exists: "+ifExists)
+		if(ifExists)
+			{	
+				
+				var friendArray = JSON.parse(currentUser.friendsList)
+
+				console.log(friendArray)
+				friendArray.push(IDtoAdd)
+
+				var example = {
+					id: currentUser.id,
+					picture: currentUser.picture,
+					email: currentUser.email,
+					name: currentUser.name,
+					facebookID: currentUser.facebookID,
+					friendsList: JSON.stringify(friendArray),
+					matchList: currentUser.matchList,
+
+				};
+				console.log(example)
+				return API.updateExample(currentUser.id, example).then(function () { 
+					refreshProfile(currentUserID)
+				console.log("update success")
+			});
+
+			
+		}
+		else
+			return console.log("friend doesnt exist!")
+		
+	})
+	
+	
+}
+
+function refreshProfile(id)
+{
+
+	var friends = [];
+	var friendsList = []
+
+	
+
+	API.getExamples().then(function(data) {
+
+		
+
+		for (i = 0; i<data.length; i++)
+		{
+			if(id == data[i].facebookID)
+				{
+					currentUserMySQLID = data[i].id
+					currentName = data[i].name
+					currentEmail = data[i].email
+					mysqlID = data[i].id
+					friends = JSON.parse(data[i].friendsList)
+				}
+		}
+
+		console.log("FB ID "+id)
+		console.log("MYSQL ID "+currentUserMySQLID)
+		console.log("NAME "+currentName)
+		console.log("EMAIL "+currentEmail)
+
+		
+
+		for(i = 0; i<data.length;i++)
+		{
+			if(friends.includes(data[i].id))
+				{
+					
+					friendsList.push(data[i])
+				}
+			}
+	
+			console.log(friendsList)
+
+		var $examples = friendsList.map(function(example) {
+			
+		  var $a = $("<a>")
+			.text(example.name)
+			.attr("href", "/example/" + example.id);
+	
+		  var $li = $("<li>")
+			.attr({
+			  class: "list-group-item",
+			  "data-id": example.id
+			})
+			.append($a);
+	
+		  var $button = $("<button>")
+			.addClass("btn btn-danger float-right message")
+			.attr("id","message"+example.id)
+			.text("MSG")
+
+		  
+		  $li.append($button);
+	
+		  return $li;
+
+
+		});
+	
+
+		$exampleList.empty();
+		$exampleList.append($examples);
+	  });
+
+}
+
+function message(id)
+{
+	alert(id)
+}
+
+$searchbtn.on("click", friendSearch);
 
 
 (function ($) {
@@ -214,3 +404,62 @@ function statusChangeCallback(response) {
 
 })(jQuery);
 
+
+
+
+
+	var handleDeleteBtnClick = function() {
+		var idToDelete = $(this)
+		  .parent()
+		  .attr("data-id");
+	  
+		//console.log(idToDelete)
+
+
+
+		(function(t,a,l,k,j,s){
+			s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+			;k=t.Promise;t.Talk={v:1,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+			.push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+		
+			Talk.ready.then(function() {
+				var me = new Talk.User({
+					id: currentUserMySQLID,
+					name: currentName,
+					email: currentEmail,
+					photoUrl: "https://demo.talkjs.com/img/alice.jpg",
+					welcomeMessage: "Hey there! How are you? :-)"
+				});
+				window.talkSession = new Talk.Session({
+					appId: "t1k3jDlw",
+					me: me
+				});
+				var other = new Talk.User({
+					id: idToDelete,
+					name: "Jessica Arellano",
+					email: "jessa3280@yahoo.com",
+					photoUrl: "https://demo.talkjs.com/img/sebastian.jpg",
+					welcomeMessage: "Hey, how can I help?"
+				});
+			
+				var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other))
+				conversation.setParticipant(me);
+				conversation.setParticipant(other);
+				var inbox = talkSession.createInbox({selected: conversation});
+				inbox.mount(document.getElementById("talkjs-container"));
+			});
+
+
+
+
+
+
+
+
+
+
+	  };
+	  
+	  // Add event listeners to the submit and delete buttons
+
+	  $exampleList.on("click", ".message", handleDeleteBtnClick);
