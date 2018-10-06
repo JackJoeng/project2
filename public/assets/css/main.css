@@ -2927,6 +2927,10 @@
 		}
 
 /* Banner */
+	
+	.banner {
+		background-image: url("/assets/images/banner.jpg") ;
+	}
 
 	#banner {
 		padding: 14em 0 12em 0;
