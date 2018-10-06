@@ -1,5 +1,4 @@
 var db = require("../models");
-var path = require("path");
 
 module.exports = function(app) {
   // Load index page
@@ -11,9 +10,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/share.html", function(req, res) {
+  app.get("/signup.html", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
-      res.render("share", {
+      res.render("signup", {
         examples: dbExamples
       });
     });
@@ -26,19 +25,6 @@ module.exports = function(app) {
       });
     });
   });
-
-  /* app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
-
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/cms.html"));
-  });
-
-  // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  }); */
 
 
   // Load example page and pass in an example by id

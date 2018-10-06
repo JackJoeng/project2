@@ -13,6 +13,23 @@
 		vertical-align: baseline;
 	}
 
+	img {
+   		border-style: none;
+		border-radius: 50%;
+   		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px; 
+		display: block;
+	}
+
+	.center {
+		margin: auto;
+		width: 50%;
+		
+		padding: 10px;
+	}
+
+
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
@@ -220,7 +237,6 @@
 	}
 
 	.row > * {
-		float: left;
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;

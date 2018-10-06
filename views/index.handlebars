@@ -1,5 +1,6 @@
+<div class="container">
 <!-- Banner -->
-<section id="banner">
+<section class="bannerbc" id="banner">
 	<div class="content">
 		<h1>Dating App</h1>
 		<p>Save your date
@@ -14,28 +15,30 @@
 
 <!-- One -->
 <section id="one" class="wrapper">
-	<div class="inner flex flex-3">
-		<div class="flex-item left">
-			<div id="test"></div>
-			<img id="testimage" src="" style="float:left" />
+	<div class="row">
+		<h5 class="align-center"><div id="test"></div></h5>
+	</div>
 
-
+	<div class="row">
+		<div class="center"><br>
+			<img class="center" id="testimage" src="" /><br>
 		</div>
-		<div class="flex-item right">
-			<div>
-				<h3>Feature 3</h3>
+	</div><br>
 
-				<button type="button" id="friendbtn">Go to Friend Finder</button>
-
-
-				<button type="button" id="testbtn">Add to DB Test</button>
-				<input type="text" id="searchInput">
-				<button type="button" id="searchBtn">Add to FriendsList</button>
-
+	<div class="row align-center">
+		<div class="center">
+			<div><br>
+				<input type="text" id="searchInput" placeholder="Search by FB ID"><br>
+				<ul class="actions">
+				<li><button type="button" id="friendbtn">Find</button></li>
+				<li><button type="button" id="testbtn">Add</button></li>
+				<li><button type="button" id="searchBtn">Friend List</button></li>
+				</ul>
 			</div>
-			<div>
-				<div id="friendsList"></div>
+	<div class="row align-center">
+			<div><br>
 				<h3>Friend List:</h3>
+				<div id="friendsList"></div>
 				<ul id="example-list" class="list-group">
 					{{#each examples}}
 					<li data-id="{{this.id}}" class="list-group-item">
@@ -45,28 +48,40 @@
 					{{/each}}
 				</ul>
 
-
-
 				<h3>Match List</h3>
-				<div id="matchList"></div>
-
-
-				
-
-
-			</div>
-		</div>
-	</div>
-</section>
-				<h3>Match Finder</h3>
-				
-				<ul id="match-list" class="list-group">
-					{{#each match}}
-					<li match-id="{{this.id}}" class="list-group-item">
+				<ul id="matches-list" class="list-group">
+					{{#each matches}}
+					<li data-id="{{this.id}}" class="list-group-item">
 						<a href="example/{{this.id}}">{{this.facebookID}}</a>
 						<button class="btn btn-danger float-right delete">ｘ</button>
 					</li>
 					{{/each}}
 				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
 
-<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
+<section id="two" class="wrapper center">
+
+<h3 class="align-center">Match Finder</h3>
+
+<ul id="match-list" class="list-group">
+	{{#each match}}
+	<li match-id="{{this.id}}" class="list-group-item">
+		<a href="example/{{this.id}}">{{this.facebookID}}</a>
+		<br><br><button class="btn btn-danger float-right delete">ｘ</button>
+	</li>
+	{{/each}}
+</ul>
+
+</section>
+
+<section id="three" class="wrapper align-center">
+	<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+		<i>Loading chat...</i>
+	</div>
+</section>
+
+</div>

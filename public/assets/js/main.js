@@ -4,6 +4,7 @@
 var $testbtn = $("#testbtn");
 var $searchbtn = $("#searchBtn");
 var $exampleList = $("#example-list");
+var $matchesList = $("#matches-list");
 var $matchList = $("#match-list");
 var $friendbtn = $("#friendbtn");
 
@@ -15,6 +16,7 @@ var currentPicture = ""
 var currentMatchList
 var currentFriendList
 var currentMatchQueue
+var currentMatchSeen
 var currentIterator = 0;
 
 
@@ -163,9 +165,11 @@ function statusChangeCallback(response) {
 						email: response.email,
 						name: response.name,
 						facebookID: response.id,
+
 						friendsList: JSON.stringify(['test']),
 						matchList: JSON.stringify(['test']),
 						matchQueue: JSON.stringify(['test']),
+						matchSeen: JSON.stringify(['test']),
 					};
 
 					API.saveExample(example).then(function (data) {
@@ -213,6 +217,7 @@ function friendSearch() {
 				currentUser.facebookID = data[i].facebookID
 				currentUser.friendsList = data[i].friendsList
 				currentUser.matchList = data[i].matchList
+				currentUser.matchSeen = data[i].matchSeen
 			}
 
 			if (friend == data[i].facebookID) {
@@ -239,6 +244,7 @@ function friendSearch() {
 				facebookID: currentUser.facebookID,
 				friendsList: JSON.stringify(friendArray),
 				matchList: currentUser.matchList,
+				matchSeen: currentUser.matchSeen
 
 			};
 			console.log(example)
@@ -266,10 +272,12 @@ function friendSearch() {
 
 function refreshProfile(id) {
 
+	console.log("refreshprofile hit")
 	var friends = [];
 	var friendsList = []
 
-
+	var matches = [];
+	var matchesList = [];
 
 	API.getExamples().then(function (data) {
 
@@ -284,8 +292,11 @@ function refreshProfile(id) {
 				currentFriendList = data[i].friendsList
 				currentMatchList = data[i].matchList
 				currentMatchQueue = data[i].matchQueue
+				currentMatchSeen = data[i].matchSeen
 				mysqlID = data[i].id
+
 				friends = JSON.parse(data[i].friendsList)
+				matches = JSON.parse(data[i].matchList)
 			}
 		}
 
@@ -295,7 +306,13 @@ function refreshProfile(id) {
 			}
 		}
 
-		console.log(friendsList)
+		
+
+		for (i = 0; i < data.length; i++) {
+			if (matches.includes(data[i].id)) {
+				matchesList.push(data[i])
+			}
+		}
 
 		var $examples = friendsList.map(function (example) {
 
@@ -326,9 +343,46 @@ function refreshProfile(id) {
 
 		});
 
-
+		
 		$exampleList.empty();
 		$exampleList.append($examples);
+
+
+		
+
+		var $matches = matchesList.map(function (example) {
+
+			var $a = $("<a>")
+				.text(example.name)
+				.attr("href", "/example/" + example.id);
+
+			var $li = $("<li>")
+				.attr({
+					class: "list-group-item",
+					"data-id": example.id,
+					"picture-id": example.picture,
+					"email-id": example.email,
+					"name-id": example.name
+				})
+				.append($a);
+
+			var $button = $("<button>")
+				.addClass("btn btn-danger float-right message")
+				.attr("id", "message" + example.id)
+				.text("MSG")
+
+
+			$li.append($button);
+
+			return $li;
+
+
+		});
+
+		$matchesList.empty();
+		$matchesList.append($matches);
+
+
 	});
 
 }
@@ -374,24 +428,85 @@ function matches() {
 	console.log("FRIENDS " + currentFriendList)
 	console.log("FRIENDS " + currentMatchList)
 	console.log("MATCH QUEUE " + currentMatchQueue)
+	console.log("MATCHES SEEN " + currentMatchSeen)
 
 	API.getExamples().then(function (data) {
 
+		console.log(currentIterator);
 
+		console.log(data[currentIterator].facebookID+" == "+currentUserID)
 
-		if (data[currentIterator].facebookID == currentUserID)
-			currentIterator++
-		/*
-		else if(currentFriendList.includes(data[i].id))
-			i++
+		var good = false;
 
-		else if(currentMatchList.includes(data[i].id))
-			i++
+		while(!good)
+		{
+
+			
+			
+			if (data[currentIterator].facebookID == currentUserID)
+				currentIterator++
+			
+				if(currentIterator == data.length)
+				{
+					var $a = $("<a>")
+					.text("No One Else Available!")
 		
-		else
-			{*/
+					var $li = $("<li>")
+					.attr({
+						class: "list-group-item",
+					})
+					.append($a);
 		
+					$matchList.empty();
+					$matchList.append($li);
+		
+					return null
+				}
 
+			if(currentMatchSeen.includes(data[currentIterator].id))
+				currentIterator++
+
+				if(currentIterator == data.length)
+				{
+					var $a = $("<a>")
+					.text("No One Else Available!")
+		
+					var $li = $("<li>")
+					.attr({
+						class: "list-group-item",
+					})
+					.append($a);
+		
+					$matchList.empty();
+					$matchList.append($li);
+		
+					return null
+				}
+
+			if (data[currentIterator].facebookID !== currentUserID && !currentMatchSeen.includes(data[currentIterator].id))
+				good = true;
+		}
+
+
+		console.log(currentIterator + " lol "+data.length)
+
+		if(currentIterator == data.length)
+		{
+			var $a = $("<a>")
+			.text("No One Else Available!")
+
+			var $li = $("<li>")
+			.attr({
+				class: "list-group-item",
+			})
+			.append($a);
+
+			$matchList.empty();
+			$matchList.append($li);
+
+			return null
+		}
+		
 
 		var $a = $("<a>")
 			.text(data[currentIterator].name)
@@ -430,9 +545,6 @@ function matches() {
 		$li.append($yesbutton);
 		$li.append($nobutton);
 		$li.append($image);
-
-		//return $li;
-
 
 		console.log("lol")
 		console.log($matchList)
@@ -514,7 +626,36 @@ $searchbtn.on("click", friendSearch);
 
 
 var handleNoBtnClick = function () {
+	 
+	var otherID = $(this)
+	.parent()
+	.attr("match-id");
+
+
 	currentIterator++
+
+	var matchSeenArray = JSON.parse(currentMatchSeen)
+	matchSeenArray.push(otherID)
+
+
+	var example = {
+		id: currentUserMySQLID,
+		picture: currentPicture,
+		email: currentEmail,
+		name: currentName,
+		facebookID: currentUserID,
+		friendsList: currentFriendList,
+		matchList: JSON.stringify(matchArray),
+		matchQueue: JSON.stringify(queueArray),
+		matchSeen: JSON.stringify(matchSeenArray),
+
+	};
+	console.log(example)
+
+	return API.updateExample(currentUserMySQLID, example).then(function () {
+		matches()
+		console.log("update success")
+	});
 }
 
 
@@ -531,12 +672,15 @@ var handleYesBtnClick = function () {
 	API.getExamples().then(function (data) {
 		
 		var matchArray = JSON.parse(currentMatchQueue)
+		var matchSeenArray = JSON.parse(currentMatchSeen)
+		var queueArray = JSON.parse(currentMatchQueue)
 
 		for (i = 0; i < data.length; i++) {
 			if (data[i].id == otherID) {
 				if (data[i].matchQueue.includes(currentUserMySQLID)) {
 					alert("MATCH")
-					matchArray.push(otherID)
+					matchArray.push(parseInt(otherID, 10))
+					refreshProfile(currentUserID)
 
 				}
 			}
@@ -545,7 +689,7 @@ var handleYesBtnClick = function () {
 		}
 
 
-		var queueArray = JSON.parse(currentMatchQueue)
+		matchSeenArray.push(otherID)
 		queueArray.push(otherID) 
 
 		console.log(queueArray)
@@ -558,7 +702,8 @@ var handleYesBtnClick = function () {
 			facebookID: currentUserID,
 			friendsList: currentFriendList,
 			matchList: JSON.stringify(matchArray),
-			matchQueue: JSON.stringify(queueArray)
+			matchQueue: JSON.stringify(queueArray),
+			matchSeen: JSON.stringify(matchSeenArray),
 
 		};
 		console.log(example)
@@ -589,6 +734,8 @@ var handleNoBtnClick = function () {
 
 
 var handleDeleteBtnClick = function () {
+
+	console.log("YEEEETSTERRRRR")
 
 	var otherID = $(this)
 		.parent()
@@ -668,6 +815,7 @@ var handleDeleteBtnClick = function () {
 // Add event listeners to the submit and delete buttons
 
 $exampleList.on("click", ".message", handleDeleteBtnClick);
+$matchesList.on("click", ".message", handleDeleteBtnClick);
 
 $matchList.on("click", ".yes", handleYesBtnClick);
 $matchList.on("click", ".no", handleNoBtnClick);
